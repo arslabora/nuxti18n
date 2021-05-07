@@ -1,0 +1,87 @@
+backend:
+  name: github
+  branch: master
+  repo: arslabora/i18nuxt
+
+publish_mode: editorial_workflow
+
+local_backend: true
+
+media_folder: "static/media/uploads"
+public_folder: "/media/uploads"
+
+i18n:
+  structure: multiple_files
+  locales: [en, it, pt]
+  default_locale: en
+
+collections:
+
+# ---------------------------------------------------------------------------- #
+#                                   Articles                                   #
+# ---------------------------------------------------------------------------- #
+  - label: "Articles"
+    label_singular: "Article"
+    name: "articles"
+    folder: "content/articles"
+    slug: "{{slug}}/index"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    i18n: true
+    fields:
+      - { name: "title", label: "Title", widget: "string", i18n: true }
+      - { name: "body", label: "Body", widget: markdown, i18n: true }
+      - { label: 'Cover Image', name: 'image', widget: 'image' }
+      - name: "topics"
+        label: "Topics"
+        widget: "list"
+        summary: "{{fields.name}}"
+        field: { label: Name, name: name, widget: string}
+      - { label: "Have slides?", name: "have-slides", widget: "boolean", default: false}
+      - label: 'Slides'
+        name: 'slides'
+        widget: object
+        media_folder: 'slides'
+        public_folder: 'slides'
+        fields:
+        - label: Images
+          name: images
+          widget: list
+          field: { label: Image, name: image, widget: image, required: false }
+
+# ---------------------------------------------------------------------------- #
+#                                     Posts                                    #
+# ---------------------------------------------------------------------------- #
+  - label: "Posts"
+    label_singular: "Post"
+    name: "posts"
+    folder: "content/posts"
+    slug: "{{slug}}/index"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    i18n: true
+    fields:
+      - { name: "title", label: "Title", widget: "string", i18n: true }
+      - { name: "body", label: "Body", widget: "markdown", i18n: true }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        summary: "{{fields.name}}"
+        field: { label: Name, name: name, widget: string}
+
+# ---------------------------------------------------------------------------- #
+#                                      FAQ                                     #
+# ---------------------------------------------------------------------------- #
+  - label: "FAQ"
+    name: "faq"
+    folder: "content/faq"
+    slug: "{{question}}/index"
+    media_folder: ''
+    public_folder: ''
+    create: true
+    i18n: true
+    fields:
+      - { label: "Question", name: "question", widget: "string", i18n: true }
+      - { label: "Answer", name: "answer", widget: "string", i18n: true }
