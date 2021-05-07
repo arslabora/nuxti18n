@@ -1,10 +1,10 @@
-# codesandbox-nuxt
+# i18n Nuxt Boilerplate
 
-> Nuxt starter for CodeSandBox (used for https://template.nuxtjs.org)
+For a sane multilanguage content development. It's already configured with Tailwind (JIT), PostCSS and PurgeCSS, Content and NetlifyCMS.
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
